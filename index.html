@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MyTube</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="icon" type="image/png" href="assets/Symbol.svg" />
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <div class="left">
+      <button id="menu-toggle" class="icon-btn" aria-label="Toggle sidebar">
+        <i class="material-icons">menu</i>
+      </button>
+      <img class="logo" src="assets/Symbol.svg" alt="YouTube logo">
+    </div>
+
+    <form id="search-form" class="search" role="search" aria-label="Site search">
+      <input id="search-input" type="search" placeholder="Search" aria-label="Search videos">
+      <button type="submit" aria-label="Search">
+        <i class="material-icons">search</i>
+      </button>
+    </form>
+
+    <div class="right-icons">
+      <button class="icon-btn" title="Upload" aria-label="Upload"><i class="material-icons">video_call</i></button>
+      <button class="icon-btn" title="Apps" aria-label="Apps"><i class="material-icons">apps</i></button>
+      <button class="icon-btn" id="theme-toggle" title="Toggle theme" aria-label="Toggle theme"><i class="material-icons">brightness_6</i></button>
+      <button class="icon-btn" title="Profile" aria-label="Profile"><i class="material-icons">account_circle</i></button>
+    </div>
+  </header>
+
+  <!-- LAYOUT: Sidebar (vertical Y axis) + Main content -->
+  <div class="layout">
+    <!-- VERTICAL SIDEBAR -->
+    <aside id="sidebar" class="sidebar" aria-label="Primary navigation">
+      <nav class="sidebar-nav" role="navigation">
+        <div class="category-section">
+          <button class="cat-btn active" data-cat="all" tabindex="0">
+            <i class="material-icons">home</i><span>Home</span>
+          </button>
+          <button class="cat-btn" data-cat="explore" tabindex="0">
+            <i class="material-icons">explore</i><span>Explore</span>
+          </button>
+          <button class="cat-btn" data-cat="subscriptions" tabindex="0">
+            <i class="material-icons">subscriptions</i><span>Subscriptions</span>
+          </button>
+        </div>
+
+        <div class="category-section">
+          <button class="cat-btn" data-cat="library" tabindex="0">
+            <i class="material-icons">video_library</i><span>Library</span>
+          </button>
+          <button class="cat-btn" data-cat="history" tabindex="0">
+            <i class="material-icons">history</i><span>History</span>
+          </button>
+          <button class="cat-btn" data-cat="your-videos" tabindex="0">
+            <i class="material-icons">video_label</i><span>Your videos</span>
+          </button>
+          <button class="cat-btn" data-cat="watch-later" tabindex="0">
+            <i class="material-icons">watch_later</i><span>Watch later</span>
+          </button>
+        </div>
+
+        <div class="category-section">
+          <p class="subscriptions-heading">SUBSCRIPTIONS</p>
+          <button class="cat-btn" data-cat="channel-zaio" tabindex="0">
+            <i class="material-icons">account_circle</i><span>Zaio</span>
+          </button>
+          <button class="cat-btn" data-cat="channel-tvg" tabindex="0">
+            <i class="material-icons">account_circle</i><span>That Vlog Girl</span>
+          </button>
+          <button class="cat-btn" data-cat="channel-ls" tabindex="0">
+            <i class="material-icons">account_circle</i><span>LoFi Studio</span>
+          </button>
+        </div>
+
+        <div class="category-section">
+          <button class="cat-btn" data-cat="settings" tabindex="0"><i class="material-icons">settings</i><span>Settings</span></button>
+          <button class="cat-btn" data-cat="help" tabindex="0"><i class="material-icons">help</i><span>Help</span></button>
+          <button class="cat-btn" data-cat="feedback" tabindex="0"><i class="material-icons">feedback</i><span>Send Feedback</span></button>
+        </div>
+
+        <div class="sidebar-footer">
+          <div class="footer-links">
+            <span>About</span><span>Press</span><span>Contact</span>
+          </div>
+          <div class="footer-links">
+            <span>Terms</span><span>Privacy</span><span>How it works</span>
+          </div>
+          <div class="copyright">© 2025 MyTube by Rhiain Coslett</div>
+        </div>
+      </nav>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+      <!-- Horizontal chips  -->
+      <section class="top-chips" aria-label="Categories">
+        <button class="chip active" data-cat="all">All</button>
+        <button class="chip" data-cat="music">Music</button>
+        <button class="chip" data-cat="education">Education</button>
+        <button class="chip" data-cat="sports">Sports</button>
+        <button class="chip" data-cat="vlogs">Vlogs</button>
+        <button class="chip" data-cat="comedy">Comedy</button>
+      </section>
+
+      <!-- VIDEO GRID -->
+      <section class="videos" id="videos" aria-live="polite">
+        <article class="video" data-category="education">
+          <div class="thumbnail">
+            <img src="./assets/thumbnail-1-education.png" alt="Boost Social Engagement">
+          </div>
+          <div class="details">
+            <img class="channel-icon" src="./assets/two-guys.png" alt="Channel icon">
+            <div class="meta">
+              <p class="title">EP 2 | Boost Social Engagement</p>
+              <p class="channel">Two Guys</p>
+              <p class="views">37k views • 1 month ago</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="video" data-category="music">
+          <div class="thumbnail">
+            <img src="./assets/thumbnail-2-music.png" alt="LoFi Music">
+          </div>
+          <div class="details">
+            <img class="channel-icon" src="./assets/lofi-studio.png" alt="Channel icon">
+            <div class="meta">
+              <p class="title">Lo-Fi Music Playlist</p>
+              <p class="channel">LoFi Studio</p>
+              <p class="views">120k views • 2 weeks ago</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="video" data-category="sports">
+          <div class="thumbnail">
+            <img src="./assets/thumbnail-3-sport.png" alt="From Tackles to Touchdowns">
+          </div>
+          <div class="details">
+            <img class="channel-icon" src="./assets/studio-shodwe.png" alt="Channel icon">
+            <div class="meta">
+              <p class="title">From Tackles to Touchdowns</p>
+              <p class="channel">Studio Shodwe</p>
+              <p class="views">1.3M views • 3 months ago</p>
+            </div>
+          </div>
+        </article>
+        <article class="video" data-category="education">
+          <div class="thumbnail">
+            <img src="./assets/thumbnail-5-education.png" alt="Books to Change Your Mindset">
+          </div>
+          <div class="details">
+            <img class="channel-icon" src="./assets/samira-hadid.png" alt="Channel icon">
+            <div class="meta">
+              <p class="title">Books to Change Your Mindset</p>
+              <p class="channel">Samira Hadid</p>
+              <p class="views">50k views • 1 week ago</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="video" data-category="music">
+          <div class="thumbnail">
+            <img src="./assets/thumbnail-10-music.png" alt="Chill Music Playlist">
+          </div>
+          <div class="details">
+            <img class="channel-icon" src="./assets/olivia-wilson.png" alt="Channel icon">
+            <div class="meta">
+              <p class="title">Late Night Vibe | Chill Music Playlist</p>
+              <p class="channel">Olivia Wilson</p>
+              <p class="views">125k views • 2 days ago</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="video" data-category="vlogs">
+          <div class="thumbnail">
+            <img src="./assets/thumbnail-12-vlog.png" alt="Canada Vlog">
+          </div>
+          <div class="details">
+            <img class="channel-icon" src="./assets/that-vlog-girl.png" alt="Channel icon">
+            <div class="meta">
+              <p class="title">World Tour Ep 3 | Canada Vlog</p>
+              <p class="channel">That Vlog Girl</p>
+              <p class="views">1M views • 1 month ago</p>
+            </div>
+          </div>
+        </article>
+        <article class="video" data-category="education">
+          <div class="thumbnail">
+            <img src="./assets/thumbnail-15-education.png" alt="How to Read More Books">
+          </div>
+          <div class="details">
+            <img class="channel-icon" src="./assets/olivia-jones.png" alt="Channel icon">
+            <div class="meta">
+              <p class="title">How to Read More Books</p>
+              <p class="channel">Olivia Jones</p>
+              <p class="views">10k views • 5 days ago</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="video" data-category="music">
+          <div class="thumbnail">
+            <img src="./assets/thumbnail-11-music.png" alt="Night LoFi">
+          </div>
+          <div class="details">
+            <img class="channel-icon" src="./assets/lofi-studio.png" alt="Channel icon">
+            <div class="meta">
+              <p class="title">Night LoFi</p>
+              <p class="channel">LoFi Studio</p>
+              <p class="views">150k views • 2 weeks ago</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="video" data-category="sports">
+          <div class="thumbnail">
+            <img src="./assets/thumbnail-4-sport.png" alt="Player of the Week">
+          </div>
+          <div class="details">
+            <img class="channel-icon" src="./assets/studio-shodwe.png" alt="Channel icon">
+            <div class="meta">
+              <p class="title">Player of the Week | Jonathan Patterson</p>
+              <p class="channel">Studio Shodwe</p>
+              <p class="views">3M views • 1 week ago</p>
+            </div>
+          </div>
+        </article>
+        <article class="video" data-category="education">
+          <div class="thumbnail">
+            <img src="./assets/thumbnail-6-education.png" alt="How to Start Coding">
+          </div>
+          <div class="details">
+            <img class="channel-icon" src="https://yt3.ggpht.com/ytc/AOPolaRvvUvn6t9MtTRGuFcz7Ba1f1T6BKYZ01egnEWJ=s68-c-k-c0x00ffffff-no-rj" alt="Channel icon">
+            <div class="meta">
+              <p class="title">How to Start Coding</p>
+              <p class="channel">Zaio</p>
+              <p class="views">37k views • 1 month ago</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="video" data-category="music">
+          <div class="thumbnail">
+            <img src="./assets/thumbnail-17-music.png" alt="Jazz Music Live Streaming">
+          </div>
+          <div class="details">
+            <img class="channel-icon" src="./assets/rimberio-channel.png" alt="Channel icon">
+            <div class="meta">
+              <p class="title">Jazz Music Live Streaming</p>
+              <p class="channel">Rimberio Channel</p>
+              <p class="views">200k viewers • LIVE</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="video" data-category="vlogs">
+          <div class="thumbnail">
+            <img src="./assets/thumbnail-13-vlog.png" alt="Outdoor Vlog Lazy Sunday">
+          </div>
+          <div class="details">
+            <img class="channel-icon" src="./assets/that-vlog-girl.png" alt="Channel icon">
+            <div class="meta">
+              <p class="title">Outdoor Vlog #43 | Lazy Sunday</p>
+              <p class="channel">That Vlog Girl</p>
+              <p class="views">2.3M views • 2 months ago</p>
+            </div>
+          </div>
+        </article>
+        <article class="video" data-category="education">
+          <div class="thumbnail">
+            <img src="./assets/thumbnail-7-education.png" alt="Web Programming for Beginners">
+          </div>
+          <div class="details">
+            <img class="channel-icon" src="https://yt3.ggpht.com/ytc/AOPolaRvvUvn6t9MtTRGuFcz7Ba1f1T6BKYZ01egnEWJ=s68-c-k-c0x00ffffff-no-rj" alt="Channel icon">
+            <div class="meta">
+              <p class="title">Web Programming for Beginners</p>
+              <p class="channel">Zaio</p>
+              <p class="views">350k views • 2 months ago</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="video" data-category="vlogs">
+          <div class="thumbnail">
+            <img src="./assets/thumbnail-14-vlog.png" alt="A Day in My Life">
+          </div>
+          <div class="details">
+            <img class="channel-icon" src="./assets/that-vlog-girl.png" alt="Channel icon">
+            <div class="meta">
+              <p class="title">EP 14 | A Day in My Life</p>
+              <p class="channel">That Vlog Girl</p>
+              <p class="views">220k views • 2 weeks ago</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="video" data-category="sports">
+          <div class="thumbnail">
+            <img src="./assets/thumbnail-22-sport.png" alt="Crack of The Bat">
+          </div>
+          <div class="details">
+            <img class="channel-icon" src="./assets/studio-shodwe.png" alt="Channel icon">
+            <div class="meta">
+              <p class="title">Crack of The Bat</p>
+              <p class="channel">Studio Shodwe</p>
+              <p class="views">1.1M views • 3 weeks ago</p>
+            </div>
+          </div>
+        </article>
+        <article class="video" data-category="education">
+          <div class="thumbnail">
+            <img src="./assets/thumbnail-8-education.png" alt="Code Like a Pro">
+          </div>
+          <div class="details">
+            <img class="channel-icon" src="https://yt3.ggpht.com/ytc/AOPolaRvvUvn6t9MtTRGuFcz7Ba1f1T6BKYZ01egnEWJ=s68-c-k-c0x00ffffff-no-rj" alt="Channel icon">
+            <div class="meta">
+              <p class="title">Code Like a Pro: Build a Website from Scratch</p>
+              <p class="channel">Zaio</p>
+              <p class="views">50k views • 1 week ago</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="video" data-category="education">
+          <div class="thumbnail">
+            <img src="./assets/thumbnail-9-education.png" alt="Basics: Graphic Design">
+          </div>
+          <div class="details">
+            <img class="channel-icon" src="./assets/learn-it-all.png" alt="Channel icon">
+            <div class="meta">
+              <p class="title">Basics: Graphic Design</p>
+              <p class="channel">Learn it All</p>
+              <p class="views">20k views • 2 weeks ago</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="video" data-category="sports">
+          <div class="thumbnail">
+            <img src="./assets/thumbnail-23-sport.png" alt="The Most Epic Cricket">
+          </div>
+          <div class="details">
+            <img class="channel-icon" src="./assets/studio-shodwe.png" alt="Channel icon">
+            <div class="meta">
+              <p class="title">The Most Epic Cricket: Matches of the Decade</p>
+              <p class="channel">Studio Shodwe</p>
+              <p class="views">800k views • 3 meeks ago</p>
+            </div>
+          </div>
+        </article>
+        <article class="video" data-category="education">
+          <div class="thumbnail">
+            <img src="./assets/thumbnail-18-education.png" alt="How to Become a Freelancer">
+          </div>
+          <div class="details">
+            <img class="channel-icon" src="./assets/learn-it-all.png" alt="Channel icon">
+            <div class="meta">
+              <p class="title">How to Become a Freelancer</p>
+              <p class="channel">Learn it All</p>
+              <p class="views">100k views • 1 month ago</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="video" data-category="education">
+          <div class="thumbnail">
+            <img src="./assets/thumbnail-19-education.png" alt="How to Sell Anything Online">
+          </div>
+          <div class="details">
+            <img class="channel-icon" src="./assets/learn-it-all.png" alt="Channel icon">
+            <div class="meta">
+              <p class="title">How to Sell Anything Online</p>
+              <p class="channel">Learn it All</p>
+              <p class="views">120k views • 2 months ago</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="video" data-category="sports">
+          <div class="thumbnail">
+            <img src="./assets/thumbnail-24-sport.png" alt="Hot Takes: Sports Edition">
+          </div>
+          <div class="details">
+            <img class="channel-icon" src="./assets/two-guys.png" alt="Channel icon">
+            <div class="meta">
+              <p class="title">Ep 23 | Hot Takes: Sports Edition</p>
+              <p class="channel">Two Guys</p>
+              <p class="views">56k views • 2 months ago</p>
+            </div>
+          </div>
+        </article>
+        <article class="video" data-category="education">
+          <div class="thumbnail">
+            <img src="./assets/thumbnail-21-education.png" alt="Mind-Blowing Math Secrets">
+          </div>
+          <div class="details">
+            <img class="channel-icon" src="./assets/francisco.png" alt="Channel icon">
+            <div class="meta">
+              <p class="title">Mind-Blowing Math Secrets</p>
+              <p class="channel">Francisco Andrade</p>
+              <p class="views">3k views • 1 day ago</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="video" data-category="education">
+          <div class="thumbnail">
+            <img src="./assets/thumbnail-16-education.png" alt="Lesson 5: Learn to Focus">
+          </div>
+          <div class="details">
+            <img class="channel-icon" src="./assets/olivia-jones.png" alt="Channel icon">
+            <div class="meta">
+              <p class="title">Lesson 5: Learn to Focus</p>
+              <p class="channel">Olivia Jones</p>
+              <p class="views">320k views • 2 months ago</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="video" data-category="education">
+          <div class="thumbnail">
+            <img src="./assets/thumbnail-20-education.png" alt="Illustration Design Tutorial">
+          </div>
+          <div class="details">
+            <img class="channel-icon" src="./assets/learn-it-all.png" alt="Channel icon">
+            <div class="meta">
+              <p class="title">Illustration Design Tutorial</p>
+              <p class="channel">Learn it All</p>
+              <p class="views">207k views • 3 months ago</p>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <!-- VIDEO MODAL -->
+  <div id="videoModal" class="modal" aria-hidden="true">
+    <div class="modal-inner" role="dialog" aria-label="Video player">
+      <button class="modal-close" aria-label="Close">×</button>
+      <div class="modal-video">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=vwKF7388tUqUqf6n" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <!-- <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=krFLJhD6_nM0hq3V" title="Video player" frameborder="0" allowfullscreen></iframe> -->
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <p>© 2025 MyTube by Rhiain Coslett</p>
+  </footer>
+</body>
+</html>
+
