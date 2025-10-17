@@ -444,9 +444,13 @@
   </div>
 
   <!-- VIDEO MODAL -->
-  <div id="videoModal" class="modal" aria-hidden="true">
+   <div id="videoModal" class="modal" aria-hidden="true">
     <div class="modal-inner" role="dialog" aria-label="Video player">
       <button class="modal-close" aria-label="Close">×</button>
+      <div class="modal-controls" aria-label="Player view controls">
+        <button id="theater-toggle" class="icon-btn" title="Theater mode" aria-label="Toggle theater mode"><i class="material-icons">theaters</i></button>
+        <button id="mini-toggle" class="icon-btn" title="Mini player" aria-label="Toggle mini player"><i class="material-icons">picture_in_picture_alt</i></button>
+      </div>
       <div class="modal-video">
         <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=vwKF7388tUqUqf6n" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         <!-- <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=krFLJhD6_nM0hq3V" title="Video player" frameborder="0" allowfullscreen></iframe> -->
