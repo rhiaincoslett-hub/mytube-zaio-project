@@ -492,36 +492,138 @@ body.dark .site-footer {
     border-color: #2a2a2a; 
 }
 
-/* RESPONSIVE */
+/* RESPONSIVE - UPDATED */
 @media (max-width: 900px) {
   .sidebar { 
     width: 200px; 
-}
+  }
   .sidebar.collapsed { 
     width: 64px; 
+  }
 }
+
+/* MOBILE OPTIMIZED */
+@media (max-width: 768px) {
+  /* Navbar adjustments for mobile */
+  .navbar {
+    padding: 0 8px;
+    gap: 8px;
+  }
+
+  .navbar .left {
+    gap: 8px;
+  }
+
+  .logo {
+    height: 24px;
+  }
+
+  
+  .search {
+    flex: 1;
+    max-width: none;
+    margin: 0 8px;
+  }
+
+  .search input[type="search"] {
+    max-width: none;
+    width: 100%;
+    font-size: 16px; 
+    padding: 10px 12px;
+  }
+
+  /* Hide some right icons on very small screens */
+  .right-icons .icon-btn:nth-child(1),
+  .right-icons .icon-btn:nth-child(2) {
+    display: none;
+  }
+
+  /* Sidebar - hidden by default, slides in from left */
+  .sidebar {
+    position: fixed;
+    left: -100%;
+    top: 56px;
+    width: 280px;
+    height: calc(100vh - 56px);
+    z-index: 999;
+    transition: left 0.3s ease-in-out;
+    border-right: 1px solid #eee;
+  }
+
+  /* Show sidebar when active */
+  .sidebar.active {
+    left: 0;
+  }
+
+  /* Don't collapse sidebar on mobile - always show full labels */
+  .sidebar.collapsed {
+    width: 280px;
+    left: -100%;
+  }
+
+  .sidebar.collapsed.active {
+    left: 0;
+  }
+
+  .sidebar.collapsed .cat-btn span,
+  .sidebar.collapsed .subscriptions-heading,
+  .sidebar.collapsed .sidebar-footer {
+    display: block;
+  }
+
+  /* Main content takes full width */
+  .main-content {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  /* Overlay for when sidebar is open */
+  body::after {
+    content: '';
+    position: fixed;
+    top: 56px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 998;
+  }
+
+  body.sidebar-open::after {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Videos grid - 1-2 columns on mobile */
+  .videos {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    padding: 12px;
+    gap: 16px;
+  }
+
+  /* Modal adjustments */
+  .modal iframe {
+    height: 50vh;
+  }
+
+  .modal.miniplayer .modal-inner {
+    width: 280px;
+    margin: 0 8px 80px 0;
+  }
 }
-@media (max-width: 700px) {
-  .layout { 
-    flex-direction: column; 
-    height: auto; 
-}
-  .sidebar { 
-    order: 2; 
-    width:100%; 
-    height:auto; 
-    border-right:none; 
-    border-bottom:1px solid #eee;
-}
-  .sidebar.collapsed { 
-    width:100%; 
-}
-  .main-content { 
-    order:1; 
-}
-  .modal iframe { 
-    height: 40vh; 
-}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+  .videos {
+    grid-template-columns: 1fr;
+  }
+
+  .search {
+    margin: 0 4px;
+  }
 }
 
 

@@ -195,4 +195,42 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 });
+// Sidebar toggle (mobile-friendly)
+  if (menuToggle && sidebar) {
+    menuToggle.addEventListener('click', () => {
+      const isMobile = window.innerWidth <= 768;
+      
+      if (isMobile) {
+        // On mobile: toggle 'active' class and body class for overlay
+        sidebar.classList.toggle('active');
+        document.body.classList.toggle('sidebar-open');
+      } else {
+        // On desktop: toggle 'collapsed' class
+        sidebar.classList.toggle('collapsed');
+      }
+      
+      // Update aria-expanded for accessibility
+      const expanded = sidebar.classList.contains('active') || 
+                       !sidebar.classList.contains('collapsed');
+      menuToggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+    });
 
+    // Close sidebar when clicking overlay (mobile)
+    document.body.addEventListener('click', (e) => {
+      if (window.innerWidth <= 768 && 
+          sidebar.classList.contains('active') && 
+          !sidebar.contains(e.target) && 
+          !menuToggle.contains(e.target)) {
+        sidebar.classList.remove('active');
+        document.body.classList.remove('sidebar-open');
+      }
+    });
+
+    // Handle window resize
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768) {
+        sidebar.classList.remove('active');
+        document.body.classList.remove('sidebar-open');
+      }
+    });
+  }
